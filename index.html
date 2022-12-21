@@ -115,6 +115,50 @@ distractionFreeMode: false  // Facebook-like distraction free mode
 })
 gitalk.render('gitalk-container')
 </script>
+    <html>
+ <head></head>
+ <body>
+  <div> 
+   <h1><font color="ff0000"></font>
+    <div class="text" style=" text-align:center;">
+     <font color="ff0000"><img class="wp-smiley" src="https://cdn.jsdelivr.net/gh/xiaonuo2/blog-img/denglong.gif" alt="灯笼" title="灯笼" />春节倒计时<img class="wp-smiley" src="https://cdn.jsdelivr.net/gh/xiaonuo2/blog-img/denglong.gif" alt="灯笼" title="灯笼" /></font>
+    </div></h1> 
+   <h3 id="title-1">
+    <div class="text" style=" text-align:center;">
+     2022年春节时间：2033年1月31日 农历 正月初一
+     <img class="wp-smiley" src="https://cdn.jsdelivr.net/gh/xiaonuo2/blog-img/meigui.png" alt="玫瑰" title="玫瑰" />
+    </div></h3> 
+   <h3 id="title-2">
+    <div class="text" style=" text-align:center;">
+     <img class="wp-smiley" src="https://cdn.jsdelivr.net/gh/xiaonuo2/blog-img/taiyang.png" alt="太阳" title="太阳" />距离2023年春节还有
+     <img class="wp-smiley" src="https://cdn.jsdelivr.net/gh/xiaonuo2/blog-img/89.png" alt="网站春节倒计时代码分享" />
+    </div></h3> 
+   <div>
+    <div class="text" style=" text-align:center;"> 
+     <span id="t_d">00</span> 
+     <span id="t_h">00</span> 
+     <span id="t_m">00</span> 
+     <span id="t_s">00</span> 
+    </div> 
+    <script type="text/javascript">
+function getRTime(){
+var EndTime= new Date('2023/01/22 00:00:00'); //截止时间
+var NowTime = new Date();
+var t =EndTime.getTime() - NowTime.getTime();
+var d=Math.floor(t/1000/60/60/24);
+var h=Math.floor(t/1000/60/60%24);
+var m=Math.floor(t/1000/60%60);
+var s=Math.floor(t/1000%60);document.getElementById("t_d").innerHTML = d + " 天";
+document.getElementById("t_h").innerHTML = h + " 时";
+document.getElementById("t_m").innerHTML = m + " 分";
+document.getElementById("t_s").innerHTML = s + " 秒";
+}
+setInterval(getRTime,1000);
+</script>
+   </div>
+  </div>
+ </body>
+</html>
     <!--底部导航栏-->
     <p style="background-color:#222222"style="color:#FFF"align="center">
       <span><big><big><big><big>关注我</big></big></big></big></span><br>
