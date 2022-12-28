@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.iconpark-icon{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+body {
+  font-size: 16px;
+  color: #555;
+}
+ul,
+li {
+  list-style: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #555;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+/* layout */
+
+header,
+nav {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  border-right: 1px solid #ebebeb;
+}
+header {
+  top: 0;
+  height: 40px;
+  border-bottom: 1px solid #ebebeb;
+}
+nav {
+  top: 40px;
+  height: calc(100vh - 40px);
+}
+
+article,
+footer {
+  margin-left: 250px;
+}
+article {
+  min-height: calc(100vh - 30px);
+}
+footer {
+  height: 30px;
+}
+
+/* layout end */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  background: #fff;
+  overflow: auto;
+}
+
+nav .group-container {
+  position: relative;
+}
+nav .group-name {
+  font-weight: bold;
+  position: relative;
+  transition: all 0.3s;
+}
+nav .group-container.fold .children-ul {
+  height: 0;
+  overflow: hidden;
+}
+
+nav .group-container.unfold .children-ul {
+  height: auto;
+}
+
+/* 展开按钮 */
+nav .toggle-nav {
+  position: absolute;
+  font-weight: normal;
+  right: 10px;
+  top: 50%;
+  font-size: 16px;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+nav .children-ul {
+  margin-left: 12px;
+}
+nav .children-ul a {
+  font-size: 14px;
+  padding: 2px 8px;
+}
+
+nav a,
+nav .group-name {
+  padding: 4px 10px;
+  margin: 6px 4px;
+  display: block;
+  border-left: 4px solid transparent;
+}
+nav a.active {
+  border-left: 4px solid #555;
+  color: #000;
+}
+
+article {
+  line-height: 1.8;
+  overflow: auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+article > * {
+  width: 700px;
+  margin: 0 auto;
+}
+article h1,
+article h2 {
+  font-weight: bold;
+  margin-bottom: 0.4em;
+  color: #000;
+}
+article h1 {
+  font-size: 28px;
+}
+article h2 {
+  font-size: 22px;
+}
+
+article p {
+  margin-bottom: 20px;
+}
+article figure img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+article figure figcaption {
+  text-align: center;
+  margin-top: 10px;
+  color: #a5a5a5;
+}
+
+article .update-time {
+  color: #a5a5a5;
+  font-size: 14px;
+}
+
+header .logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+footer .footer-list {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #ccc;
+}
+footer .footer-item a {
+  color: #ccc;
+}
+footer .footer-item {
+  margin: 0 8px;
+  cursor: pointer;
+}
+footer .footer-item .iconpark-icon {
+  font-size: 14px;
+  margin-right: 2px;
+  
+}
+footer .footer-item > * {
+  vertical-align: middle;
+}
+footer .footer-item:hover {
+  color: rgb(150, 150, 150);
+}
+footer .footer-item:hover a {
+  color: rgb(150, 150, 150);
+}
+.go-train {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  letter-spacing: 2px;
+}
+
+.go-train:hover {
+  opacity: 0.8;
+}
+
+.go-train:link,
+.go-train:visited,
+.go-train:hover,
+.go-train:active {
+  color: #fff;
+}
