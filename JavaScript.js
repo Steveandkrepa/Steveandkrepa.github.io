@@ -13,7 +13,7 @@
 	        }
 	        setInterval(function(){
 	        	// timestamp is seconds in php but milliseconds in js, difference of 1000 times.
-	        	var start_timestamp = 1670551810*1000; 
+	        	var start_timestamp = 1671379200*1000; 
 	        	var duration = timeDuration(new Date(start_timestamp),new Date());
 	        	var text = "本站已上线运行" + duration.day + "天" + duration.hour + "小时" + duration.minute + "分" + duration.second + "秒";
 	        	document.querySelector(".uptime").innerText = text;
