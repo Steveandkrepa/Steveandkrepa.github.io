@@ -9,6 +9,7 @@
   top: 0;/*离顶部的距离为0*/
   margin-bottom: 5px;
   transition: all 0.5s;
+  z-index: 99;
 }
 .top ul{
   /* 清除ul标签的默认样式 */
@@ -183,8 +184,8 @@ letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
 .h{
 color:#2C3E50;/*颜色*/
 font-size:40px;/*字号*/
-font-family:STXingkai；/*字体*/
-font-weight:600；/*粗细*/
+font-family:STXingkai;/*字体*/
+font-weight:600; /*粗细*/
 }
 
 .bother{
@@ -200,5 +201,5 @@ border-top-right-radius:10px ;/*右上角圆角*/
 border-bottom-left-radius:10px ;/*左下角圆角*/
 border-bottom-right-radius:10px ;/*右下角圆角*/
 width:900px;
-margin:center
+margin:center; 
 }
