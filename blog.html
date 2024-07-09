@@ -73,6 +73,32 @@
             text-align: center;
             padding: 10px 0;
         }
+        
+        @media (max-width: 768px) {
+            .post {
+                margin: 10px 0;
+                padding: 15px;
+            }
+            .modal-content {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .post {
+                margin: 5px 0;
+                padding: 10px;
+            }
+            .post h2 {
+                font-size: 1.2em;
+            }
+            footer {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -83,9 +109,9 @@
 
 <main>
     <div class="post">
-        <h2 onclick="toggleContent(this)">第一篇博客文章</h2>
+        <h2 onclick="toggleContent(this)">等待更新</h2>
         <div class="content">
-            <p>这是第一篇博客文章的内容。欢迎阅读我的博客！</p>
+            <p>目前处于测试阶段，欢迎阅读我的博客！纯静态页面，手搓需要时间😂</p>
             <img src="./groundpicture.jpeg" alt="Image">
         </div>
     </div>
@@ -154,5 +180,3 @@
 
 </body>
 </html>
-
-
