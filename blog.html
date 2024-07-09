@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="shortcut icon" href="./images/favicon.ico">
     <link rel="bookmark" href="./images/favicon.ico">
     <title>Steveandkrepa的博客</title>
     <style>
@@ -59,6 +59,8 @@
             margin: 15% auto;
             display: block;
             width: 80%;
+            text-align: center;
+            position: relative;
         }
         .close {
             position: absolute;
@@ -76,6 +78,21 @@
             padding: 10px 0;
         }
         
+        #zoomControls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #zoomControls button {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .post {
                 margin: 10px 0;
@@ -129,12 +146,21 @@
 <!-- Modal for image -->
 <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="img01">
+    <div class="modal-content">
+        <img id="modalImg" src="" style="max-width: 100%;">
+
+        <!-- Controls for image zoom -->
+        <div id="zoomControls">
+            <button onclick="zoomIn()">放大</button>
+            <button onclick="zoomOut()">缩小</button>
+            <div id="zoomLevel">缩放比例: 100%</div>
+        </div>
+    </div>
 </div>
 
 <footer>
     <p>网站运行时间: <span id="runTime"></span></p>
-    <p>版本 1.0.1 由 Steveandkrepa 搭建 | Power by Github pages</p>
+    <p>版本 1.0.02 由 Steveandkrepa 搭建 | Power by Github pages</p>
 </footer>
 
 <script>
@@ -148,17 +174,35 @@
     }
 
     const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("img01");
+    const modalImg = document.getElementById("modalImg");
+    let zoomLevel = 1.0; // 初始缩放比例为 100%
 
-    document.querySelectorAll('.post img').forEach(img => {
-        img.onclick = function(){
-            modal.style.display = "block";
-            modalImg.src = this.src;
-        }
-    });
+    function zoomIn() {
+        zoomLevel += 0.1;
+        applyZoom();
+    }
+
+    function zoomOut() {
+        zoomLevel -= 0.1;
+        applyZoom();
+    }
+
+    function applyZoom() {
+        modalImg.style.transform = `scale(${zoomLevel})`;
+        document.getElementById("zoomLevel").textContent = `缩放比例: ${Math.round(zoomLevel * 100)}%`;
+    }
+
+    // 初始化时，为模态框内容设置初始的缩放
+    modal.style.display = "none"; // 隐藏模态框
+    modalImg.onload = function() {
+        applyZoom(); // 图片加载后立即应用初始缩放
+    };
 
     function closeModal() {
         modal.style.display = "none";
+        zoomLevel = 1.0; // 关闭模态框时重置缩放比例
+        modalImg.style.transform = `scale(${zoomLevel})`;
+        document.getElementById("zoomLevel").textContent = `缩放比例: 100%`;
     }
 
     // Function to calculate the runtime
