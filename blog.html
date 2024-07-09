@@ -42,6 +42,7 @@
         }
         .post img {
             max-width: 100%;
+            height: auto; /* Ensure images maintain aspect ratio */
             cursor: pointer;
         }
         .modal {
@@ -147,7 +148,7 @@
 <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <img id="modalImg" src="" style="max-width: 100%;">
+        <img id="modalImg" src="" style="max-width: 100%; height: auto;">
 
         <!-- Controls for image zoom -->
         <div id="zoomControls">
