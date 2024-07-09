@@ -2,10 +2,11 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/favicon.ico">
     <link rel="bookmark" href="./images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steveandkrepa的博客</title>
+    <link rel="icon" href="./icon.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,14 +22,44 @@
             color: white;
             padding: 10px 0;
             text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .search-container {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .search-box {
+            width: 40px;
+            height: 40px;
+            background-color: #555;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: width 0.4s;
+            border-radius: 5px;
+        }
+        .search-box:hover, .search-box:focus {
+            width: 200px;
+            transition: width 0.4s;
+            padding: 0 10px;
+        }
+        .search-box::placeholder {
+            color: white;
         }
         main {
             flex: 1;
             padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         .post {
             background: white;
-            margin: 20px 0;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
@@ -59,6 +90,7 @@
             margin: 15% auto;
             display: block;
             width: 80%;
+            max-width: 700px;
         }
         .close {
             position: absolute;
@@ -75,14 +107,32 @@
             text-align: center;
             padding: 10px 0;
         }
+        .filter-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #333;
+        }
         
         @media (max-width: 768px) {
-            .post {
-                margin: 10px 0;
-                padding: 15px;
+            .search-container {
+                position: static;
+                margin-bottom: 20px;
             }
-            .modal-content {
-                width: 90%;
+            .search-box {
+                width: 100%;
             }
         }
         
@@ -90,15 +140,11 @@
             header h1 {
                 font-size: 1.5em;
             }
-            .post {
-                margin: 5px 0;
-                padding: 10px;
+            .search-box {
+                width: 100%;
             }
-            .post h2 {
-                font-size: 1.2em;
-            }
-            footer {
-                font-size: 0.8em;
+            .filter-btn {
+                padding: 8px 16px;
             }
         }
     </style>
@@ -107,20 +153,44 @@
 
 <header>
     <h1>Steveandkrepa的博客</h1>
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="搜索...">
+    </div>
 </header>
 
 <main>
-    <div class="post">
-        <h2 onclick="toggleContent(this)">等待更新</h2>
+    <div class="filter-container">
+        <button class="filter-btn" data-category="tech">科技</button>
+        <button class="filter-btn" data-category="personal">个人</button>
+        <button class="filter-btn" data-category="world">世界</button>
+        <button class="filter-btn" data-category="other">其他</button>
+    </div>
+    
+    <div class="post" data-category="tech">
+        <h2 onclick="toggleContent(this)">第一篇博客文章</h2>
         <div class="content">
-            <p>目前处于测试阶段，欢迎阅读我的博客！纯静态页面，手搓需要时间😂</p>
+            <p>这是第一篇博客文章的内容。欢迎阅读我的博客！</p>
             <img src="./groundpicture.jpeg" alt="Image">
         </div>
     </div>
-    <div class="post">
+    <div class="post" data-category="personal">
         <h2 onclick="toggleContent(this)">第二篇博客文章</h2>
         <div class="content">
             <p>这是第二篇博客文章的内容。更多精彩内容请继续关注！</p>
+            <img src="./groundpicture.jpeg" alt="Image">
+        </div>
+    </div>
+    <div class="post" data-category="world">
+        <h2 onclick="toggleContent(this)">第三篇博客文章</h2>
+        <div class="content">
+            <p>这是第三篇博客文章的内容。关注全球动态，获取最新资讯！</p>
+            <img src="./groundpicture.jpeg" alt="Image">
+        </div>
+    </div>
+    <div class="post" data-category="other">
+        <h2 onclick="toggleContent(this)">第四篇博客文章</h2>
+        <div class="content">
+            <p>这是第四篇博客文章的内容。其他感兴趣的话题也在这里！</p>
             <img src="./groundpicture.jpeg" alt="Image">
         </div>
     </div>
@@ -178,6 +248,26 @@
     // Update runtime every second
     setInterval(updateRunTime, 1000);
     updateRunTime(); // Initial call
+
+    // Filter posts based on category
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            filterPosts(category);
+        });
+    });
+
+    function filterPosts(category) {
+        const posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            const postCategory = post.getAttribute('data-category');
+            if (category === postCategory || category === 'all') {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
 </script>
 
 </body>
