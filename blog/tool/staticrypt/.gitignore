@@ -1,9 +1,0 @@
-.idea
-.vscode/
-node_modules
-.staticrypt.json
-.env
-encrypted/
-!example/encrypted/
-decrypted/
-test/
