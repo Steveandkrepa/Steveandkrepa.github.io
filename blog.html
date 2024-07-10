@@ -196,6 +196,7 @@
 
 <footer>
     <p>网站运行时间: <span id="runTime"></span></p>
+    <p>访问总次数: <span id="visitCount"></span></p>
     <p>版本 1.0.2 由 Steveandkrepa 搭建 | Power by Github pages</p>
 </footer>
 
@@ -243,6 +244,17 @@
     setInterval(updateRunTime, 1000);
     updateRunTime(); // Initial call
 
+    // Function to update the visit count
+    function updateVisitCount() {
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount = parseInt(visitCount) + 1;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById("visitCount").textContent = visitCount;
+    }
+
+    // Initial call to update visit count
+    updateVisitCount();
+
     // Search functionality
     function searchPosts() {
         const input = document.getElementById('search-input').value.toLowerCase();
@@ -273,10 +285,9 @@
     }
 
     function scrollToTop() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 </script>
-
 </body>
 </html>
